@@ -6,22 +6,145 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
     <link rel="stylesheet" href="components/bootstrap.css/css/bootstrap.css">
+    <style type="text/css">
+
+    .container {
+        width: auto;
+        max-width: 800px;
+      }
+
+      a {
+        color: white;
+      }
+       a:hover {
+        color: white; 
+        text-decoration:underline;
+      }
+
+      ul {
+        margin: 0px;
+      }
+      li {
+        list-style: none;
+      }
+
+      .logo {
+        font-family: 'Sansita One', cursive; color:white;
+        font-size: 40px; 
+        text-align:right; 
+        text-shadow: black 0px 0px 22px;
+      }
+
+      .box {
+          background: rgba(0, 0, 0, 0.25);
+      }
+
+      .menu-title {
+        font-family: 'Sansita One', cursive; color:white;
+        background: black;
+        color: white;
+        padding: 3px 30px 3px 30px;
+        margin-bottom: 10px;
+        display: inline;
+        line-height: 50px;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      .menu-box {
+        line-height: 24px;
+        background: rgba(0, 0, 0, 0.25);
+        padding-left:20px;
+        color:white; 
+        font-size:18px;
+      }
+
+      @media max-width: 480px {
+      .logo {
+        font-size: 32px;
+        margin-top: 20px;
+      }        
+      }
+    </style>
     <link rel="stylesheet" href="components/bootstrap.css/css/bootstrap-responsive.css">
+    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="lib/jquery.vegas/jquery.vegas.css">
+    <link href='http://fonts.googleapis.com/css?family=Sansita+One' rel='stylesheet' type='text/css'>
     <script src="components/jquery/jquery.js"></script>
     <script src="lib/jquery.vegas/jquery.vegas.js"></script>
+    <script src="components/bootstrap.css/js/bootstrap.min.js"></script>
     <script type="text/javascript">
 
-    $.vegas('overlay');
-    $.vegas({
-      src:'img/cookies.jpg'
-    });
+$( function() {
+  $.vegas({
+    src:'img/cookies.jpg'
+  });
 
+  $.vegas('overlay', {
+    src:'lib/jquery.vegas/overlays/06.png'
+  });
+
+  $(".menu-title").on("click", function(e) {
+    $(".menu-box").hide();
+    $(this).next().show();
+  })
+});
     </script>
   </head>
   
   <body>
-    <script src="components/bootstrap.css/js/bootstrap.min.js"></script>
+    <div class="container-narrow">
+      <div class="hidden-phone" style="margin-top: 70px"></div>
+
+      <div class="container">
+        <h1 class="logo">
+          SweetsMaker <i class="icon-shopping-cart icon-large"></i>
+        </h1>
+      </div>
+
+      <div class="hidden-phone" style="margin-top: 30px"></div>
+
+      <div class="container">
+        <div class="row-fluid">
+          <div class="span3">
+            <ul>
+              <li>
+                <div class="menu-title" id="category-title">CATEGORIES</div>
+                <div class="menu-box" id="category-box" style="display:none;">
+                    <a href="#">CAKES</a> / BAKES  <br>TASTING / TOOLS <br>
+                    <a href="#">CAKES</a> / BAKES  <br>TASTING / TOOLS
+                </div>
+              </li>
+              <li>
+                <div class="menu-title">SEARCH</div>
+                <div class="menu-box" id="search-box" style="display:none;">
+                    NAME<br>PRICE
+                </div>
+              </li>
+              <li>
+                <div class="menu-title">CART</div>
+                <div class="menu-box" id="cart-box" style="display:none;">
+                  NAME<br>PRICE
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="span8 offset1">
+            <div class="box" style="color:white; padding: 10px;">
+              <p>Product</p>
+              <p>Product</p>
+              <p>Product</p>
+              <p>Product</p>
+              <p>Product</p>
+              <p>Product</p>
+              <p>Product</p>
+              <p>Product</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 
 </html>
