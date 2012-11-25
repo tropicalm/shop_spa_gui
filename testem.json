@@ -1,0 +1,23 @@
+{
+	"framework": "mocha",
+	"src_files": [
+		"src/*.coffee",
+		"tests/*.coffee"
+	],
+	"serve_files": [
+		"components/chai/chai.js",
+		"src/*.js",
+    	"tests/*.js"
+	],
+	"before_tests": "coffee -c tests/*_test.coffee src/*.coffee",	
+	"launchers": {
+	    "Mocha": {
+	        "command": "mocha -G -R tap --compilers coffee:coffee-script tests/*_test.coffee",
+	        "protocol": "tap"
+	    }
+	},
+	"launch_in_dev": [
+		"mocha",
+		"chrome"
+	]
+}
