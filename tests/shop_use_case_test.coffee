@@ -12,16 +12,18 @@ describe 'Shop', ->
 	it 'should have empty cart', ->
 		@shop.cart.should.have.length(0)
 
-	it 'should allow to add product to cart', ->
-		@shop.addProductToCart("Test")
-		@shop.cart.should.have.length(1)
-		@shop.cart[0].name.should.equal "Test"
+	describe 'should allow to manage cart items', ->
+		beforeEach -> @shop.addProductToCart("Test")
 
-	it 'should allow to remove product from cart', ->
-		@shop.addProductToCart("Test")
-		@shop.cart.should.have.length(1)
-		@shop.removeProductFromCart("Test")
-		@shop.cart.should.have.length(0)
+		it 'should allow to add product to cart', ->
+			@shop.cart.should.have.length(1)
+			@shop.addProductToCart("Abc")
+			@shop.cart.should.have.length(2)
+			@shop.cart[0].name.should.equal "Test"
+
+		it 'should allow to remove product from cart', ->
+			@shop.removeProductFromCart("Test")
+			@shop.cart.should.have.length(0)
 
 # Load external files
 if require?
