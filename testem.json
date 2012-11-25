@@ -9,6 +9,7 @@
 		"src/*.js",
     	"tests/*.js"
 	],
+	"on_exit": "rm tests/*.js src/*.js",
 	"before_tests": "coffee -c tests/*_test.coffee src/*.coffee",	
 	"launchers": {
 	    "Mocha": {
