@@ -1,13 +1,16 @@
+#<< utils
 #<< shop_use_case
-#<< shop_gui
+#<< local_storage
+#<< web_gui
+#<< web_glue
 
 class ShopApp
 	constructor: ->
-		products = [
-			{name: "Test", price: "12"},
-			{name: "Abc", price: "59"}
-		]
-		useCase = new ShopUseCase(products)
-		gui = new ShopGui()
+		useCase = new ShopUseCase()
+		storage = new LocalStorage()
+		gui = new WebGui()
+		glue = new WebGlue(useCase, gui, storage)
+
+		useCase.showAll()
 
 new ShopApp();

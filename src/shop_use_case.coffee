@@ -1,9 +1,12 @@
 class ShopUseCase
-	constructor: (products) ->
+	constructor: ->
 		@cart = []
+		@products = []
+		@orders = []
+
+	addProducts: (products) ->
 		@products = products.map (product) -> 
 			new Product(product.name, product.price)
-		@orders = []
 
 	addProductToCart: (name) ->
 		product = (product for product in @products when product.name is name)
@@ -13,6 +16,8 @@ class ShopUseCase
 		@cart = (product for product in @cart when product.name isnt name)
 
 	placeOrder: ->
+
+	showAll: ->
 
 class Product
 	constructor: (name, price) ->

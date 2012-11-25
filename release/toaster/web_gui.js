@@ -1,8 +1,8 @@
-var ShopGui;
+var WebGui;
 
-ShopGui = (function() {
+WebGui = (function() {
 
-  function ShopGui() {
+  function WebGui() {
     $.vegas({
       src: 'img/cookies.jpg'
     });
@@ -15,6 +15,10 @@ ShopGui = (function() {
     });
   }
 
-  return ShopGui;
+  WebGui.prototype.showProducts = function(products) {
+    return console.log(products);
+  };
+
+  return WebGui;
 
 })();

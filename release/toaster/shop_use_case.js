@@ -2,13 +2,17 @@ var Product, ShopUseCase;
 
 ShopUseCase = (function() {
 
-  function ShopUseCase(products) {
+  function ShopUseCase() {
     this.cart = [];
-    this.products = products.map(function(product) {
-      return new Product(product.name, product.price);
-    });
+    this.products = [];
     this.orders = [];
   }
+
+  ShopUseCase.prototype.addProducts = function(products) {
+    return this.products = products.map(function(product) {
+      return new Product(product.name, product.price);
+    });
+  };
 
   ShopUseCase.prototype.addProductToCart = function(name) {
     var product;
@@ -44,6 +48,8 @@ ShopUseCase = (function() {
   };
 
   ShopUseCase.prototype.placeOrder = function() {};
+
+  ShopUseCase.prototype.showAll = function() {};
 
   return ShopUseCase;
 

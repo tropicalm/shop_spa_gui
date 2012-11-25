@@ -4,7 +4,8 @@ describe 'Shop', ->
 			{name: "Test", price: "12"},
 			{name: "Abc", price: "59"}
 		]
-		@shop = new ShopUseCase(products)
+		@shop = new ShopUseCase()
+		@shop.addProducts(products)
 
 	it 'should have products', ->
 		@shop.should.have.property('products').with.length(2)

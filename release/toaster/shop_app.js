@@ -3,18 +3,12 @@ var ShopApp;
 ShopApp = (function() {
 
   function ShopApp() {
-    var gui, products, useCase;
-    products = [
-      {
-        name: "Test",
-        price: "12"
-      }, {
-        name: "Abc",
-        price: "59"
-      }
-    ];
-    useCase = new ShopUseCase(products);
-    gui = new ShopGui();
+    var glue, gui, storage, useCase;
+    useCase = new ShopUseCase();
+    storage = new LocalStorage();
+    gui = new WebGui();
+    glue = new WebGlue(useCase, gui, storage);
+    useCase.showAll();
   }
 
   return ShopApp;
