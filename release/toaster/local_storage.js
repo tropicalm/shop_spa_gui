@@ -7,27 +7,47 @@ LocalStorage = (function() {
     this.categories = [];
   }
 
-  LocalStorage.prototype.getData = function() {
+  LocalStorage.prototype.loadInitialData = function() {
     this.products = [
       {
         name: "Test",
-        price: "12"
+        price: 12,
+        id: 1,
+        category_id: 1,
+        description: "test"
+      }, {
+        name: "Test test",
+        price: 32,
+        id: 2,
+        category_id: 1,
+        description: "test"
       }, {
         name: "Abc",
-        price: "59"
+        price: 59,
+        id: 3,
+        category_id: 2,
+        description: "test"
       }
     ];
     return this.categories = [
       {
-        name: "Bakes"
+        name: "Bakes",
+        id: 1
       }, {
-        name: "Cakes"
+        name: "Cakes",
+        id: 2
+      }, {
+        name: "Fake+makes",
+        id: 3
       }
     ];
   };
 
-  LocalStorage.prototype.getProducts = function() {
-    return this.products;
+  LocalStorage.prototype.getInitialData = function() {
+    return {
+      categories: this.categories,
+      products: this.products
+    };
   };
 
   return LocalStorage;

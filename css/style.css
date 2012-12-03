@@ -48,14 +48,25 @@ li {
 .menu-box {
     line-height: 24px;
     background: rgba(0, 0, 0, 0.25);
-    padding-left: 20px;
+    padding: 10px 0px 10px 20px;
     color: white;
     font-size: 18px;
+    max-width: 200px;
 }
 
+#product-box {
+    color:white; 
+    padding: 10px;
+}
+.order-link {
+    margin: 10px 0px 10px 10px;
+}
 @media max-width: 480px {
     .logo {
         font-size: 32px;
         margin-top: 20px;
+    }
+    #product-box {
+        margin-top: 10px;
     }
 }
