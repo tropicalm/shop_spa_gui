@@ -12,6 +12,10 @@ class WebGui
 	    	$("#category-box").on "click", "a.category-link", (e) =>
 	    		id = $(e.currentTarget).data('id')
 	    		@categoryClicked(id)
+	    	# search prducts
+	    	$("#search-box").on "click", "a.search-link", (e) =>
+	    		name = $('#search-name').val()
+	    		@searchClicked(name)
 	    	# show product
 	    	$("#product-box").on "click", "a.product-link", (e) =>
 	    		id = $(e.currentTarget).data('id')
@@ -32,7 +36,11 @@ class WebGui
 	    		$('#order-modal').modal('show')
 	    	# confirm order
 	    	$("#order-modal").on "submit", "form.order-form", =>
-	    		@orderClicked()
+	    		buyer = 
+	    			first_name: $("#first-name").val()
+	    			last_name: $("#last-name").val()
+	    			address: $("#address").val()
+	    		@orderClicked(buyer)
 	    		false
 
 	showProducts: (products) ->
@@ -58,7 +66,8 @@ class WebGui
 	productClicked: (id) ->
 	addToCartClicked: (product_id) ->
 	removeFromCartClicked: (product_id) ->
-	orderClicked: ->
+	orderClicked: (buyer) ->
+	searchClicked: (buyer) ->
 
 	# get source from source_element, put context and parse to html_element 
 	parseTemplate: (source_element, html_element, context) ->

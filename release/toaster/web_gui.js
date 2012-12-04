@@ -42,7 +42,13 @@ WebGui = (function() {
         return $('#order-modal').modal('show');
       });
       return $("#order-modal").on("submit", "form.order-form", function() {
-        _this.orderClicked();
+        var buyer;
+        buyer = {
+          first_name: $("#first-name").val(),
+          last_name: $("#last-name").val(),
+          address: $("#address").val()
+        };
+        _this.orderClicked(buyer);
         return false;
       });
     });
@@ -94,7 +100,7 @@ WebGui = (function() {
 
   WebGui.prototype.removeFromCartClicked = function(product_id) {};
 
-  WebGui.prototype.orderClicked = function() {};
+  WebGui.prototype.orderClicked = function(buyer) {};
 
   WebGui.prototype.parseTemplate = function(source_element, html_element, context) {
     var html, source, template;

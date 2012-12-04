@@ -1,13 +1,13 @@
 #<< utils
 #<< shop_use_case
-#<< local_storage
+#<< api_storage
 #<< web_gui
 #<< web_glue
 
 class ShopApp
 	constructor: ->
 		useCase = new ShopUseCase()
-		storage = new LocalStorage()
+		storage = new ApiStorage()
 		gui = new WebGui()
 		glue = new WebGlue(useCase, gui, storage)
 

@@ -2,7 +2,7 @@ describe 'Shop', ->
 	beforeEach ->
 		data =
 			products: [
-				{name: "Test", price: 12, id:1, category_id: 1, description: "test"},
+				{name: "Test", price: 12, id: 1, category_id: 1, description: "test"},
 				{name: "Test test", price: 32, id: 2, category_id: 1, description: "test"},
 				{name: "Abc", price: 59, id: 3, category_id: 2, description: "test"}
 			]
@@ -11,6 +11,7 @@ describe 'Shop', ->
 				{name: "Cakes", id: 2},
 				{name: "Fake+makes", id: 3}
 			]
+			cart : []
 		@shop = new ShopUseCase()
 		@shop.setInitialData(data)
 
@@ -54,8 +55,12 @@ describe 'Shop', ->
 			@shop.getProducts().length.should.equal 3
 
 	it 'should allow to place order', ->
+		buyer = 
+			first_name: "Name"
+			last_name: "Test test"
+			adress: "street"
 		@shop.addProductToCart(1)
-		@shop.placeOrder()
+		@shop.placeOrder(buyer)
 		@shop.order.length.should.equal 1
 		@shop.cart.length.should.equal 0
 

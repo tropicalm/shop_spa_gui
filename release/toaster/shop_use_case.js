@@ -1,4 +1,4 @@
-var Category, Product, ShopUseCase,
+var Buyer, Category, Product, ShopUseCase,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
 ShopUseCase = (function() {
@@ -9,14 +9,23 @@ ShopUseCase = (function() {
     this.products = [];
     this.categories = [];
     this.order = null;
+    this.buyer = null;
   }
 
   ShopUseCase.prototype.setInitialData = function(data) {
+    var _this = this;
     this.products = data.products.map(function(product) {
       return new Product(product.name, product.price, product.id, product.category_id, product.description);
     });
-    return this.categories = data.categories.map(function(category) {
+    this.categories = data.categories.map(function(category) {
       return new Category(category.name, category.id);
+    });
+    return this.cart = data.cart.map(function(product_id) {
+      var product;
+      product = _this.products.filter(function(product) {
+        return product.id === product_id;
+      });
+      return product[0];
     });
   };
 
@@ -71,6 +80,14 @@ ShopUseCase = (function() {
     }
   };
 
+  ShopUseCase.prototype.findProducts = function(name) {
+    var pattern;
+    pattern = new RegExp(name, 'i');
+    return this.products.filter(function(product) {
+      return product.name.match(pattern);
+    });
+  };
+
   ShopUseCase.prototype.getCart = function() {
     return {
       products: this.cart,
@@ -80,7 +97,8 @@ ShopUseCase = (function() {
     };
   };
 
-  ShopUseCase.prototype.placeOrder = function() {
+  ShopUseCase.prototype.placeOrder = function(buyer) {
+    this.buyer = new Buyer(buyer.first_name, buyer.last_name, buyer.address);
     this.order = this.cart;
     return this.cart = [];
   };
@@ -113,6 +131,18 @@ Category = (function() {
   }
 
   return Category;
+
+})();
+
+Buyer = (function() {
+
+  function Buyer(first_name, last_name, address) {
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.address = address;
+  }
+
+  return Buyer;
 
 })();
 
